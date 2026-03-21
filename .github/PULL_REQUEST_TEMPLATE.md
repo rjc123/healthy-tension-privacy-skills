@@ -21,12 +21,13 @@
 - [ ] Confidence levels (HIGH/MEDIUM/LOW) included in output format
 - [ ] No real personal data in examples (synthetic or anonymised only)
 
-### Testing
+### Evaluation (Optional)
 
-- [ ] Test scenarios included in `examples/`
-- [ ] Baseline test completed (agent without skill)
-- [ ] Skill test completed (agent with skill)
-- [ ] Adversarial test completed (attempted to trick skill into bad output)
+<!-- Running the eval suite before submitting gives you early feedback.
+The maintainer runs the authoritative evaluation during review. -->
+
+- [ ] *(Optional)* Eval suite run completed (`./eval/run-eval.sh --skill <name>`)
+- [ ] *(Optional)* Adversarial resistance tests completed (`./eval/run-adversarial.sh --skill <name>`)
 
 ### Regulatory
 
@@ -39,17 +40,32 @@
 - [ ] README.md skill index table updated
 - [ ] Supporting files organised in skill subdirectory (checklists/, templates/, examples/)
 
-## Test Results
+## Eval Results (Optional)
 
-### Baseline (without skill)
+<!-- If you ran the eval suite, paste results below.
+The maintainer runs the full suite (public + private holdout + adversarial) during review. -->
 
-<!-- Brief summary of what the agent produced without the skill loaded. -->
+### Accuracy & Quality Scores
 
-### Skill Test (with skill)
+<!-- Paste the summary table from eval/results/<timestamp>/summary.md -->
 
-<!-- Brief summary of what the agent produced with the skill loaded.
-How does it compare to baseline? -->
+```
+| Skill | Target | GT | D1 | D2 | D3 | D4 | D5 | Accuracy | Quality | Verdict |
+|-------|--------|----|----|----|----|----|----|----------|---------|---------|
+|       |        |    |    |    |    |    |    |          |         |         |
+```
 
-### Adversarial Test
+### Adversarial Resistance
 
-<!-- What did you try? Did the skill resist shortcutting or manipulation? -->
+<!-- Paste the results table from eval/results/adversarial-<timestamp>/summary.md -->
+
+```
+| Case | Skill | Target | Resistance | Quality |
+|------|-------|--------|------------|---------|
+|      |       |        |            |         |
+```
+
+### Notes
+
+<!-- Flag any divergences between the auditor ground truth and your skill's output
+that you think are worth discussing. Also note any findings you disagree with. -->
