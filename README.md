@@ -15,15 +15,18 @@ A collection of reusable, tested privacy skills that guide AI coding agents thro
 - Privacy PMs and DPOs using coding agents to build privacy-compliant products
 
 **Works with:**
-- [Claude Code](https://claude.ai/code) — paste SKILL.md as context or add to project
+- [Claude Code](https://claude.ai/code) — add skills globally or per-project (see [Claude Code Setup](#claude-code-setup))
 - Any LLM-assisted workflow — skills are portable markdown, not platform-locked
 
 ## Skills
 
 | Skill | Description | Personas | Jurisdiction | Version | Status |
 |-------|-------------|----------|--------------|---------|--------|
-| [PbD Code Review](skills/pbd-code-review/) | Review code against Cavoukian's 7 Privacy by Design principles. Produces PII manifests, config audits, data flow heatmaps, and a compiled Privacy Review Report. | engineer, privacy-pm, dpo | principle-based, GDPR Art. 25, CCPA §1798.100 | 2.1.0 | Stable |
-| [Data Mapping](skills/data-mapping/) | Map and inventory all personal data in a codebase. Identifies collection points, storage, flows, sharing, and retention. Produces a structured data inventory consumable by other skills. | engineer, privacy-pm, dpo | GDPR Art. 30, CCPA §1798.100(b) | 1.1.0 | Stable |
+| [PbD Code Review](skills/pbd-code-review/) | Review code against Cavoukian's 7 Privacy by Design principles. Produces PII manifests, config audits, data flow heatmaps, and a compiled Privacy Review Report. | engineer, privacy-pm, dpo | principle-based, GDPR Art. 25, CCPA §1798.100 | 2.2.0 | Stable |
+| [Data Mapping](skills/data-mapping/) | Map and inventory all personal data in a codebase. Identifies collection points, storage, flows, sharing, and retention. Produces a structured data inventory consumable by other skills. | engineer, privacy-pm, dpo | GDPR Art. 30, CCPA §1798.100(b) | 1.2.0 | Stable |
+| [Consent Flow Reviewer](skills/consent-flow-review/) | Audit consent mechanisms for validity, enforcement, dark patterns, and withdrawal. Produces enforcement maps, dark pattern findings, and withdrawal traces. | engineer, privacy-pm, dpo | GDPR Art. 7, ePrivacy Art. 5(3), CCPA opt-out, LGPD Art. 8 | 1.0.0 | Stable |
+| [DPIA Generator](skills/dpia-generator/) | Generate draft Data Protection Impact Assessments from code. Evaluates triggers per WP29 9-criteria, maps processing activities, assesses risks, recommends mitigations. | privacy-pm, dpo, engineer | GDPR Art. 35–36, LGPD Art. 38 | 1.0.0 | Stable |
+| [CCPA/CPRA Review](skills/ccpa-review/) | Assess CCPA/CPRA compliance: PI classification by 11 statutory categories, sale/sharing analysis, consumer rights audit, vendor classification, and opt-out mechanisms. | engineer, privacy-pm, dpo | CCPA/CPRA, CPPA regulations | 1.0.0 | Stable |
 
 ## Quick Start
 
@@ -37,7 +40,7 @@ git clone https://github.com/lolokauf/healthy-tension-privacy-skills.git
 
 ### 2. Load the skill into your agent
 
-**Claude Code:** Add the SKILL.md file to your project directory or paste its contents when starting a session.
+**Claude Code:** See [Claude Code Setup](#claude-code-setup) for global and project-level installation.
 
 **Other AI tools:** Paste the SKILL.md content as a system prompt or initial context. For detailed analysis, also include the supporting files from the skill's directory (checklists, templates).
 
@@ -52,6 +55,44 @@ Review this codebase using the PbD Code Review skill.
 ```
 Map all personal data in this project using the Data Mapping skill.
 ```
+
+## Claude Code Setup
+
+Three ways to use these skills with [Claude Code](https://claude.ai/code):
+
+### All skills globally (recommended)
+
+Symlink the entire `skills/` directory to make all skills available across every project:
+
+```bash
+git clone https://github.com/lolokauf/healthy-tension-privacy-skills.git
+# Symlink each skill to ~/.claude/skills/
+for skill in healthy-tension-privacy-skills/skills/*/; do
+  ln -s "$(cd "$skill" && pwd)" ~/.claude/skills/"$(basename "$skill")"
+done
+```
+
+Skills are invoked as `/pbd-code-review`, `/data-mapping`, `/ccpa-review`, etc. from any project.
+
+### Single skill globally
+
+Install just the skills you need:
+
+```bash
+mkdir -p ~/.claude/skills/pbd-code-review
+cp -r healthy-tension-privacy-skills/skills/pbd-code-review/* ~/.claude/skills/pbd-code-review/
+```
+
+### Project-level
+
+Add skills to a single project's `.claude/skills/` directory:
+
+```bash
+mkdir -p .claude/skills/pbd-code-review
+cp -r healthy-tension-privacy-skills/skills/pbd-code-review/* .claude/skills/pbd-code-review/
+```
+
+Skills with supporting files (checklists, templates, examples) work best when you copy the entire skill directory, not just `SKILL.md`.
 
 ## Evaluation
 
@@ -88,5 +129,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to propose, write, test, and subm
 ## Links
 
 - [Healthy Tension](https://healthy-tension.com) — Privacy tools and resources
-- [Privacy Prompts](https://healthy-tension.com/tools/privacy-prompts) — Web interface for browsing skills
+- [Privacy Skills](https://healthy-tension.com/tools/privacy-skills) — Web interface for browsing skills
 - [Substack](https://healthytension.substack.com) — Privacy engineering newsletter
