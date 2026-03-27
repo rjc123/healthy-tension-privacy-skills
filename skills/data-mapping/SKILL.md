@@ -1,6 +1,6 @@
 ---
 name: data-mapping
-description: "Map and inventory all personal data in a codebase. Identifies collection points,
+description: (privacy-plugin) "Map and inventory all personal data in a codebase. Identifies collection points,
   storage locations, data flows, third-party sharing, and retention practices. Produces a
   structured data inventory (markdown + optional YAML) consumable by DPIA, DSAR, and
   compliance review skills. Run this first before any privacy assessment."

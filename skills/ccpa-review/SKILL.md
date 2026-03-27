@@ -1,6 +1,6 @@
 ---
 name: ccpa-review
-description: "Assess CCPA/CPRA compliance in codebases: classify personal information
+description: (privacy-plugin) "Assess CCPA/CPRA compliance in codebases: classify personal information
   by 11 statutory categories, analyse sale/sharing relationships with two-phase vendor
   assessment, audit consumer rights implementation, verify opt-out mechanisms and GPC
   handling, and compile a structured compliance report. Use for privacy audits, pre-launch

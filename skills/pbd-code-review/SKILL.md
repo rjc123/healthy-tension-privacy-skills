@@ -1,6 +1,6 @@
 ---
 name: pbd-code-review
-description: "Review code against Ann Cavoukian's 7 Privacy by Design principles.
+description: (privacy-plugin) "Review code against Ann Cavoukian's 7 Privacy by Design principles.
   Produces PII manifests, default config audits, data flow heatmaps, lifecycle tables,
   and a compiled Privacy Review Report with severity ratings. Use for PR reviews,
   codebase audits, or compliance prep. Not a legal review."

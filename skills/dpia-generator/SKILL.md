@@ -1,6 +1,6 @@
 ---
 name: dpia-generator
-description: "Generate draft Data Protection Impact Assessments from code. Evaluates
+description: (privacy-plugin) "Generate draft Data Protection Impact Assessments from code. Evaluates
   DPIA triggers per WP29 9-criteria and GDPR Art. 35(3) mandatory triggers, maps
   processing activities, builds data flow diagrams, assesses risks using a 9-category
   taxonomy, and recommends mitigations. Use before launching high-risk processing,

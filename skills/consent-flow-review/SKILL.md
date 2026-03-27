@@ -1,6 +1,6 @@
 ---
 name: consent-flow-review
-description: "Audit consent mechanisms for GDPR validity, enforcement completeness,
+description: (privacy-plugin) "Audit consent mechanisms for GDPR validity, enforcement completeness,
   dark patterns, and withdrawal symmetry. Produces consent enforcement maps, dark
   pattern findings per EDPB Guidelines 3/2022, pre-consent violation audits, and
   withdrawal traces. Use for cookie banners, analytics opt-in, marketing consent,
